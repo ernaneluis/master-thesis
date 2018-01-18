@@ -1,0 +1,74 @@
+\documentclass[../../thesis.tex]{subfiles}
+
+\graphicspath{{./img/}}
+
+\begin{document}
+
+
+\subsection{Attempts to simulate the Bitcoin transactions temporal network}
+\label{sec:applying_proposed_activity_driven_model}
+
+We propose an extension to the general activity driven model in order to simulate the Bitcoin transactions temporal network. In this extension only the agents, the ones who make connections, define the network by following basic intuition agent rules. In this section we investigate how suitable this model is for capturing the dynamics of our network over our data sample.
+
+%We defined in section 2, three days samples to be our golden models: \textit{Day a) May 4 2017; Day b) June 16 2017; Day c) August 1 2017;} Our goal is to use the proposed model described in subsection \ref{sec:modifing_activity_driven_model} to simulate one day of Bitcoin transactions. Following, we run the algorithm from \ref{sec:motifs_couting} to count the temporal motifs with $\delta = 1$ hour as the parameter. We count the motifs on the simulation temporal network output. Then, we normalize the counts to compare the distribution of the motifs counts. We compare using the root-mean-square error function describe in subsection \ref{sec:activity_driven_model_network}. Error close to one means the simulation did not capture the dynamics. We run our experiments with the initial parameters: 
+
+For all of the above simulations we used the same initial parameters from the above subsection \ref{sec:activity_driven_model_network}: Number of nodes $N=100$; $\Delta$t$=1$, Number of Connections $m=10$, Activity Distribution Function $F(x)=$ Pareto Distribution with $\alpha=2$, 5000 steps, Temporal Motif $\delta=$ 1 hour. 
+
+In model A, we simulated the network with a small memory size (size = 5 nodes) and followed the same methodology described in the previous subsection. Also, we simulated the same model but with a big memory size (size = 50 nodes). 
+
+By adding a small memory to our model we were able to achieve a better error rate than before. Compared to the day A) an error of $E=0.53157$, $E=0.440523$ for day B) and $E=0.465206$ for day C).  Compared to the Activity Driven model, we reduced the error in 8.86\% for day A and 27.56\% for day C. However, for day B our model increased the error by 13\%.
+
+For the big memory case, we were able to achieve compared to the day A) an error of  $E=0.512707$,  $E=0.368788$ for the day B) and  $E=0.536415$ for the day C). The big memory model reproduced slight lower error results than the small memory on the day A and B. Additionally, the big memory model compared to the Activity Driven model, decreased the error by 12\% for day A and 5.37\% for day C and by 16.47\%.
+
+However, that modification was not satisfactory; we thus create a new type of memory for our model: at every time step, for every node with memory, we force those nodes to connect with nodes on their memory besides the most recently added to the memory node. Our motivation with this type of memory would avoid on the same time step a node return the just received Bitcoins to its previous owner. We named this modification as model B. We simulated model B following the same procedure described above for model A. We simulate model B with small memory (size = 5 nodes) and with big memory (size = 50 nodes) as well.
+  
+For model B small memory, we were able to achieve compared to the day A) an error of $E=0.573973$,  $E=0.42058$ for day B) and $E=0.390031$ for day C). From those results, only at day C a achieved significantly improved results. For the case of model B with big memory, the simulation produced similar results as model A with a big memory.
+
+Even though we made two modification to the model, those adjustments were not able to produce satisfactory results. Thus, we investigate another modification to the model. We modified again our model based on the intuition that new agents are added to the network at every time step. Thus, we propose two more models: model C) which copies the mechanism of model A plus adds 1 new node to the network at every time step, and model D) which reproduces the model B and adds 1 new node to the system at every time step. 
+
+Following the same procedure of model A and B, we simulate model C and D with small and big memory. Unfortunately, model C was not capable of improving over model A nor model B and neither Activity Driven model. However, model D was able to overcome model A, model B and Activity Driven model on day C. We provide in table \ref{tab:motifs_models_errors}, all the computed error results for the Models A, B, C, D with small and big memory and additionally the Activity Driven model, all compared to the selected days for better understanding.  
+
+We conclude, from several attempts of simulations, we end up with model A with big memory as the best model for day A. Model D with big memory as the best for the day B. Finally, model B with small memory as the best model for day C. Besides, the models with just memory (model A and B), were able to overcome the Activity Driven model 12\% on average. All the simulations were computed on a Macbook Pro with processor 2,7 GHz Intel Core i7 8 cores and with 16 GB 2133 MHz DDR3 memory ram and took on average 40 minutes to be generated. All the simulation data and source code is hosted at \href{https://github.com/ernaneluis/master-thesis}{https://github.com/ernaneluis/master-thesis}. 
+
+
+\begin{table}
+\begin{center}
+ \begin{tabular}{ | c | c | c | c | c | } 
+  \hline
+  \textbf{Model} & \textbf{Day A} & \textbf{Day B} & \textbf{Day C} \\ 
+  \hline
+  Activity Driven & 0.583254 & 0.389751 & 0.642245\\ 
+  \hline
+  Model A memory size=5 & 0.53157 & 0.440523 & 0.465206\\ 
+  \hline
+  Model A memory size=50 & 0.512707 & 0.368788   & 0.536415\\ 
+  \hline
+  Model B memory size=5 & 0.573973 &   0.42058  & 0.390031\\ 
+  \hline
+    Model B memory size=50 & 0.519995 & 0.365183 &  0.421879\\
+  \hline
+   \hline
+    Model C memory size=5 &0.64976 &  0.533083 & 0.51391\\
+  \hline
+   \hline
+    Model C memory size=50 &0.596023   & 0.398518 & 0.585966\\
+  \hline
+  \hline
+    Model D memory size=5 &0.64987 &   0.549157 & 0.417396\\
+  \hline
+    \hline
+    Model D memory size=50 &0.540905   & 0.315639 & 0.575851\\
+  \hline
+ \end{tabular}
+ 
+\caption{All the computed error results for the Models A, B, C, D with memory size=5 and size=50 and the Additionally Activity Driven model, all compared to the selected days. Model A with memory size=50 as the best model for day A. Model D with memory size=50 as the best for the day B. Finally, model B with memory size=5 as the best model for day C. Besides, the models with just memory(model A and B), were able to overcome the Activity Driven model 12\% on average.}
+\label{tab:motifs_models_errors}
+\end{center}
+\end{table}
+
+
+
+
+\end{document}
+
+

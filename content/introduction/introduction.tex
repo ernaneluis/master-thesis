@@ -1,0 +1,87 @@
+\documentclass[../thesis.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Introduction and Related Work}
+\label{chap:Introduction}
+
+``Question answering'' (QA) sites have gained considerable popularity over the last couple of 
+years. In these Internet platforms users pose questions and answers to the public, in order to 
+exchange knowledge. Yahoo Answers, Quora and the Stack Exchange family of sites provide platforms 
+facilitating the formation of Internet communities that in turn provide natural and seamless ways 
+for organizing and obtaining knowledge \cite{YahooKnowledge}. 
+
+Dynamic aspects of such QA sites have been studied in different contexts so far. Previous works 
+in this area include: studying causality aspects through quasi experimental designs \cite{Causal}; 
+user churn analysis through classification algorithms such as support vector machines or random 
+forests \cite{ChurnQA}; and predictions of the future value of question answer pairs, according 
+to the initial activity of the question post \cite{StackLesko}. 
+
+In contrast to previous works, where long term activity of users are being predicted, we focus 
+on time series analysis related to user-defined tags. This approach offers a possibility of a 
+daily detailed analysis of users behavior. We concentrate on the QA site Stackoverflow in our work, 
+because this platform has an already established reputation on the web, and boasts a community of 
+over 5 million distinct active users, who have provided more than 18 million answers to more than 
+11 million questions. Thanks to the shear size of the corresponding data set, as well as 
+the regular activity of the user base, we were able to mine temporal data in order to uncover 
+defining aspects of the dynamics of the users behavior. 
+
+Our work of analyzing the temporal dynamics of the users is divided into two 
+segments. The first segment is analyzing the collective users behavior related to a 
+specific tag, through modeling changes in attention as a variability in the fluctuation of time 
+series of occurrences of users defined tags, which can be categorized as a special case of 
+\textit{heterocedasticity} or input dependent noise. In the second segment we focus on finding 
+common user posting behavior.
+
+Due to the complexity of the user-system interaction (millions of people discuss thousands of 
+topics), flexible and accurate models are required in order to guarantee a reliable analysis. 
+The Bayesian setting and Gaussian Process (GP) framework \cite{GP} have shown to provide an 
+accurate and flexible tool for time series analysis in the recent years, and can be used to create 
+accurate models. In particular, the possibility of incorporating error ranges, as well as different 
+models trough the selection of different kernels, allows interpretability of the results. 
+
+We provide an extension of sparse input Gaussian Processes \cite{VariableSparse,Sparse} which allow 
+us to model functional dependence in the time variation of the fluctuations. In practical 
+experiments, we study the top 10 different tags for the Stackoverflow data set over different years, 
+spanning a data set of over 2.9 million questions. We find that our model outperforms the predictions 
+made by the simple GP model under variable noise. In particular, we discover weekly and seasonal 
+periodicity patterns, as well as random behavior in monthly trends.
+
+The goal of our second segment is to find common behavioral patterns among the users. This task is 
+performed by clustering the time series of postings for each user, and cluster centroids are taken 
+as representatives of common users behavioral patterns. Analyzing each user as time series 
+of postings however is not possible, because the majority of the users (almost 94\%) on an 
+individual level show a posting behavior of less then ten postings in 2014, where the posting 
+behavior of all the users together show a regular activity. This behavior may occur because of many 
+reasons, but mainly because of the users limited working capacity. This leads to a sparsity of data, 
+that makes it difficult to analyze the users behavior with a GP model, therefore we use a point 
+process. Point processes are standard models when the objects of study are the number and 
+repartition of otherwise identical points on a domain, usually time or space.
+
+Similar work has been done for analyzing user behavior \cite{malmgren2008poissonian}, where a 
+Poisson Point Process (PPP) is used to explain the heavy tails in e-mail communication. However, 
+the number of users that were analyzed is much smaller than we want to analyze, due to the 
+computational complexity of the PPP. Recent development of a fast approximation 
+\cite{samo2014scalable} of the PPP makes it possible to apply this model on much bigger scale. In 
+this approximated PPP model the intensity function is modeled by our extended sparse GP, which is 
+learned by using Monte Carlo sampling.
+
+For clustering the intensity functions of every PPP we have developed a new scale invariant 
+similarity measure, called Dynamic Piecewise Time similarity measure, and K-PSC clustering algorithm 
+that is a generalization of the K-SC \cite{yang2011patterns}. Our algorithm is able to find more 
+descriptive cluster centroids than the normal K-means clustering algorithm. Also, we do not find 
+any seasonal behavior of the individual users like we have found in the collective behavior.
+
+The theory behind the models used in this work is presented in the next chapter. We formally 
+introduce the Gaussian Process framework and provide details regarding our extensions towards 
+variable noise models. In section \ref{sec: poisson_process} we present brief introduction of 
+Poisson Point process. Then, in section \ref{sec: clustering_time_series_user_behaviour}, we introduce 
+the Dynamic Piecewise Time similarity measure and the K-PSC clustering algorithm. In chapter 
+\ref{chap:coarse_grained} we show an analysis of the periodicity of the time series of tag activity 
+in the Stackoverflow data set. Next, we compare our prediction results with those of other models, 
+and also discuss the advantages of introducing functional dependencies on noise terms. In chapter 
+\ref{chap:fine_grained} we present the common patterns of the user behavior, that we discovered 
+using the Dynamic Piecewise Time similarity measure and the K-PSC clustering algorithm. Finally, we 
+provide conclusions and directions for future work.
+
+\end{document}

@@ -1,0 +1,65 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {english}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Fig. (\subref {fig:sample_prior}) shows three functions drawn at random from a GP prior by joining a large number of evaluated points. Fig. (\subref {fig:sample_posterior}) shows three random functions drawn from the posterior, i.e. the prior conditioned on the five noise free observations indicated. In both plots the shaded area represents the point-wise mean plus and minus two times the standard deviation for each input value (corresponding to the 95\% confidence region), for the prior and posterior respectively.\relax }}{15}{figure.caption.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces (\subref {fig:sq_cv_function}): a square exponential covariance function; (\subref {fig:sq_cv_sample}): three functions, randomly sampled from three Gaussian processes, defined by a square exponential covariance functions with different length scales.\relax }}{18}{figure.caption.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces (\subref {fig:rq_cv_function}): a rational quadratic covariance function; (\subref {fig:rq_cv_sample}): three functions, randomly sampled from three Gaussian processes, defined by a rational quadratic covariance functions with $l=1$ and different values for $\alpha $.\relax }}{19}{figure.caption.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces (\subref {fig:ma_cv_function}): a covariance functions from the Mat\'{e}rn class;(\subref {fig:ma_cv_sample}): three functions, randomly sampled from three Gaussian processeswith Mat\'{e}rn covariance functions with different values of $\nu $ and $l=1$.\relax }}{20}{figure.caption.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces (\subref {fig:sq_per_cv_function}): covariance functions that is product of SQ and periodic covariance function; (\subref {fig:sq_per_cv_sample}): three random function sampled from a Gaussian processes with SQ/periodic covariance functions with different values for the period $p$, where $l_1=1$ and $l_2=1$.\relax }}{21}{figure.caption.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Similarity matrix is obtained by applying the SE-PER covariance function with amplitude $c=1$, period $p=1$, and different values for the length-scales ($l_1,l_2$) on discretized $x$-axis of 200 equally spaced points between 0 and 3.\relax }}{22}{figure.caption.15}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Synthetic heteroscedastic data set learned by full Gaussian Process model Fig. (\subref {fig:synthetic_full_gp}); synthetic heteroscedastic data set learned by sparse pseudo-input Gaussian process (SPGP) Fig.(\subref {fig:synthetic_spgp}). In both plots the shaded area represents the point-wise mean plus and minus two times the standard deviation for each input value (corresponding to the 95\% confidence region). The red lines at the bottom in the Fig. (\subref {fig:synthetic_spgp}) represent the locations of the pseudo-input points.\relax }}{25}{figure.caption.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Synthetic heteroscedastic data set learned by sparse pseudo-input Gaussian process with heteroscedastic extension (SPGP+HS) model. The red pluses are representing the locations of the pseudo-input points, and the size of the pluses is proportional to the magnitude of the influence of a pseudo-input point to the prediction. Pseudo-input points that have large pluses influence the prediction more, hence the uncertainty associated with that point is smaller. The shaded area represents the point-wise mean plus and minus two times the standard deviation for each input value (corresponding to the 95\% confidence region).\relax }}{26}{figure.caption.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Synthetic heteroscedastic data set learned by sparse pseudo-input Gaussian process with functional heteroscedastic extension (SPGP+RBFSIN-HS) model. The red pluses are representing the locations of the pseudo-inputs. The size of the plus is proportional to the influence of this pseudo-input to the prediction. Pseudo-inputs that have large pluses influence the prediction more, hence the uncertainty associated with that point is smaller.\relax }}{27}{figure.caption.18}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.10}{\ignorespaces User intensity functions generated from a Poisson point process.\relax }}{31}{figure.caption.19}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.11}{\ignorespaces (\subref {fig:k-psc_outlier_examples}) six time series, five of them have the same shape (two picks) and one time series that is considered as outlier; (\subref {fig:k-psc_outlier_clusters}) cluster centroids, one centroid is found by K-means, the other by K-PSC. The centroid found by the K-PSC algorithm is much more descriptive and resistant to outliers then the centroid found by K-means.\relax }}{34}{figure.caption.20}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Spectral Density Estimation of the Stackoverflow dataset using periodogram. We observe two peaks, one at two and a half days and the other at five days, where the latter peak is double the period of the former peak period.\relax }}{38}{figure.caption.22}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Models learned with SPGP+SIN-HS for the ``Java'' and ``iOS'' tags for 2014 data set.\relax }}{40}{figure.caption.25}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Decomposition of the SPGP+SIN-HS model for the ``android'' tags in the different kernels. We observe four main behaviors: mean trends, seasonal trends, weekly periods and weekly noise.\relax }}{42}{figure.caption.26}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Intensities of Poisson point process models and arrivals of four user from the Stackoverflow dataset. Read points are called induced points, and are used for approximating the full Poisson point process. Bayesian optimization method is used for finding the location of the induced points. The shaded area represents the point-wise mean plus and minus two times the standard deviation for each input value (corresponding to the 95\% confidence region)\relax }}{44}{figure.caption.27}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Average Silhouette Coefficient using DPT similarity measure for different values of $R$ (number of pieces).\relax }}{45}{figure.caption.28}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \relax }}{46}{figure.caption.29}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Centroids resulted from clustering ($K=150$) the Stackoverflow users who posted an answer to a question related to the top ten tags in 2014. With every centroid, 10 users randomly chosen from the corresponding cluster are also presented.\relax }}{58}{figure.caption.30}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Centroids resulted from clustering ($K=150$) the Stackoverflow users who posted an answer to a question related to the top ten tags in 2014. With every centroid, 10 users randomly chosen from the corresponding cluster are also presented.\relax }}{59}{figure.caption.31}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Centroids resulted from clustering ($K=150$) the Stackoverflow users who posted an answer to a question related to the top ten tags in 2014. With every centroid, 10 users randomly chosen from the corresponding cluster are also presented.\relax }}{60}{figure.caption.32}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Centroids resulted from clustering ($K=150$) the Stackoverflow users who posted an answer to a question related to the top ten tags in 2014. With every centroid, 10 users randomly chosen from the corresponding cluster are also presented.\relax }}{61}{figure.caption.33}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Centroids resulted from clustering ($K=150$) the Stackoverflow users who posted an answer to a question related to the top ten tags in 2014. With every centroid, 10 users randomly chosen from the corresponding cluster are also presented.\relax }}{62}{figure.caption.34}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {C.1}{\ignorespaces Centroids resulted from clustering ($K=150$) the Stackoverflow users who posted an answer to a question related to the top ten tags in 2014. With every centroid, 10 users randomly chosen from the corresponding cluster are also presented.\relax }}{63}{figure.caption.35}

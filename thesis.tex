@@ -1,0 +1,244 @@
+% arara: pdflatex
+% arara: biber
+% arara: pdflatex
+% arara: pdflatex
+
+\documentclass[12pt, %font size
+%twoside, % two sided printing
+abstract=on % Use an abstract
+]{scrreprt} % BCOR sets the space, used by the type of  book. (e.g. glued, hard cover..)
+%scrreprt is used for larger texts with chapters (Master or Bachelor Thesis)
+%scrartcl is used when there are no chapters ( for smaller paper)
+
+%\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+%\usepackage[parfill]{parskip}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} % sets up english hyphenation
+\usepackage{csquotes} % for language-dependent quotes in biblatex
+\usepackage[unicode=true]{hyperref} % enables use of metadata for pdfs and hyperlinks within a 
+\usepackage{float}
+
+\usepackage[natbib,maxnames=2,maxbibnames=100,style=alphabetic,firstinits=true,sorting=none,
+backend=biber,citestyle=alphabetic,backref,hyperref]{biblatex}
+
+\usepackage[usenames,dvipsnames,hyperref]{xcolor} % enables more advanced color support for hyperref
+\hypersetup{colorlinks=true, %flag for prints   
+    linkcolor=red!35!black,    %definition of the link color
+    citecolor=green!35!black,  %definition of the cite color
+    urlcolor=magenta!35!black, %definition of the url color
+    %pdfauthor=, % Optional: Specify the author of the pdf
+    %pdftitle=   % Optional: Specify the title within the pdf
+}
+
+
+\usepackage{subfiles} %This package is used for subfiles
+\usepackage{tabu}     % provides advanced tables
+\usepackage{array,multirow}
+
+\usepackage{booktabs} % enables reference bookstyle tables
+\usepackage[format=plain, labelfont=bf]{caption}
+\usepackage[capitalize,noabbrev]{cleveref}
+\usepackage{subcaption} % enables use multiple figures in a figure
+\usepackage{cleveref}
+
+
+\usepackage{enumitem} % allows customization of enumeration and itemize environment
+\usepackage{graphicx} % enables loading of graphics
+
+%\onehalfspacing % increases linespacing to one and half
+\usepackage{placeins} % provides FloatBarrier
+
+\usepackage[ruled,vlined]{algorithm2e} %algorithm package
+
+\usepackage[tbtags]{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{bm}
+
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
+\newcommand*{\Eqref}[1]{Eq.~\eqref{#1}}
+\newcommand*{\Eqsref}[1]{Eqs.~\eqref{#1}}
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage{graphicx}
+\usepackage{tikz,nicefrac,amsmath,pifont,tkz-graph,makecell,tkz-graph}
+\usetikzlibrary{arrows,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks}
+
+\bibliography{thesis}
+
+%some definitions for the cref package
+\crefname{algocf}{Algorithm}{Algorithms}
+\crefname{table}{Table}{Tables}
+\crefname{chapter}{Chapter}{Chapters}
+\crefname{equation}{Equation}{Equations}
+\crefname{section}{Section}{Sections} 
+
+
+%
+\begin{document}
+%
+%\frontmatter          % for the preliminaries
+\begin{titlepage}
+        \begin{center}
+
+            % Upper part of the page. The '~' is needed because \\
+            % only works if a paragraph has started.
+            \includegraphics[width=0.3\textwidth]{./fig/logo.pdf}\\
+
+            \textsc{\LARGE Rheinische\\[5mm] Friedrich-Wilhelms-Universität Bonn}\\[1.5cm]
+
+            \textsc{\Large Master thesis}\\[1.5cm]
+
+            % Title
+            { \Large Let There be Trade: Towards Learning the Evolution of the Bitcoin Transactions Temporal Network}\\[3.4cm]
+
+            % Author and supervisor
+            \begin{minipage}[t]{0.4\textwidth}
+                \begin{flushleft} \large
+                    \emph{Author:} \\
+                    Ernane Luis Paixão \textsc{Aguiar} \\
+                    \emph{Matr. Number:}                 
+                    2878646
+                \end{flushleft}
+            \end{minipage}
+            \begin{minipage}[t]{0.5\textwidth}
+                \begin{flushright} \large
+                    \emph{First Examiner:} \\
+                    Prof.~Dr.~Christian \textsc{Bauckhage} \\
+                    University of Bonn \\ [0.5cm]
+                    \emph{Second Examiner:} \\ 
+                    Prof.~Dr.~Stefan~\textsc{Wrobel}
+                    University of Bonn \\[0.5cm]
+                    
+
+                            %\emph{Abteilung:} \\
+                        %Autonome Intelligente Systeme
+                \end{flushright}
+            \end{minipage}
+
+            \vfill
+
+            % Bottom of the page
+%            {\large Submitted:\hspace{1cm} Jan 18, 2018}
+
+        \end{center}
+    \end{titlepage}
+    
+     \pagestyle{headings}  % switches on printing of running heads
+    \title{Basic \LaTeX \, Template}
+    %\subtitle{Master thesis}
+    \author{Kostadin Cvejoski\\ \begin{minipage}{8cm}\centering \small 
+Friedrich-Wilhelms-Universität Bonn\\ \small (group)\end{minipage}}
+
+    \vspace{4cm}
+
+    \cleardoublepage
+    \thispagestyle{empty}
+    {\noindent%
+        \huge{\textbf{\textsf{Declaration of Authorship}}}
+    }
+    \vspace{2cm}
+    \begin{flushleft}
+        \noindent%
+        I declare that the work presented here is original and the result of my own investigations.
+        Formulations and ideas taken from other sources are cited as such.
+
+        It has not been submitted, either in part or whole, for a degree at this or any other university.
+    \end{flushleft}
+
+    \vspace{8cm}
+    \noindent%
+    \rule[1em]{8em}{0.5pt}  \hfill \rule[1em]{8em}{0.5pt}\\ % This prints a line to write the date
+    Location, Date \hfill Signature\\
+
+
+    \cleardoublepage
+    
+    \chapter*{Acknowledgements}
+    
+    First of all I would like to thank my parents for providing me inexhaustible support and continuous encouragement throughout my years of study and the whole 
+process of researching and writing. Specially my mother, this accomplishment would not have been possible without her. I am also grateful to my thesis advisor Cesar Ali Ojeda Marin from the Fraunhofer-Institute for Intelligent Analysis and Informations System (IAIS). His door was always  open for me and whenever I had a question he was always there offering me his support. 
+    
+    I would like to also express my appreciation to my examiners: Prof. Dr. Christian Bauckhage and Prof. Dr. Stefan Wrobel. Thank you for giving me the opportunity to work with you on this publication. 
+    
+    Finally, I must express very profound gratitude to however is Satoshi Nakamoto for his brilliant contribution to mankind and for igniting me this passion to dive deeper into the Cryptocurrencies.
+    
+     Thank you.
+
+
+
+    \chapter*{Abstract}
+    
+Since the creation of Bitcoin in 2009, few contributions have been made towards modeling the network dynamics of the Bitcoin Blockchain. To date, no work has been done on trying to understand why Bitcoin agents make a trade with other agents by modeling the set of Bitcoin Transactions as a Temporal Network. In this work, we are interested in discovering why connections are made in the Bitcoin network rather than how it grows. To accomplish this, we derive a temporal network from the Bitcoin blockchain where we capture the quality of the dynamics by examining small temporal subgraph patterns. We then investigate the possibility of modeling such dynamics using a general probabilistic approach. Finally, we attempt to learn the dynamics of the real data and propose promising future work for predicting the before-mentioned dynamics. 
+
+    
+%    \thispagestyle{empty}
+    
+    \chapter*{Introduction}
+    
+Bitcoin was proposed in 2008 as an experiment of a digital cash system entirely peer-to-peer, without a need for central authority, by an anonymous author self-entitled Satoshi Nakamoto \cite{nakamoto2008bitcoin}.  Since then, a lot of work has been done related to market analysis and privacy of Bitcoin, but few contributions have been made towards analyzing the network dynamics of Bitcoin. Additionally, at this date, no work has been published related to learning how the Bitcoins agents exchange with each order by modeling the set of Bitcoin Transactions as a Temporal Network. In this work, we address the problem of how the Bitcoin agents make connections rather than how the network grows. Since the algorithms utilized in this work were relatively new, we hold the opportunity to kick off an investigation towards learning the dynamics of the Bitcoin agents interactions. 
+
+Thus, we start our work by describing how the Bitcoin Protocol works in Section~\ref{sec:bitcoin_works} and what kind of data it stores. Second, in Section~\ref{sec:bitcoin_as_a_graph} we propose an approach to derive a temporal network from the Bitcoin transaction data. We state why it is challenging to infer the agents based on the available data. Since the Bitcoin Protocol by design does not provide explicit information of which agent send to who.
+
+Later on, on section \ref{sec:motifs_temporal_network} we explain an algorithm to count temporal subgraphs patterns, so-called temporal motifs, proposed by \citeauthor{temporalMotifs}\cite{temporalMotifs}. With this algorithm in hands, we can capture the quality of the dynamics and use as a metric of such quality on the following section \ref{sec:activity_driven_model}. Where we investigate the possibility of modeling such dynamics using a general probabilistic approach as ground zero proposed by \citeauthor{perra2012activity}\cite{perra2012activity}. The work of \citeauthor{perra2012activity} provides us with a generative based model where with only a Distribution is capable of creating complex dynamics and it solely focuses on the creation of edges rather than on the growth of the network. We continue the section by proposing several modifications to the general activity driven model to attempt to achieve better results. Also running our modified models, we count the temporal motifs in order to measure how our models capture the quality of the real Bitcoin temporal network dynamics. 
+
+Finally, in Section~\ref{sec:biglcam} we attempt to learn the dynamics of the real Bitcoin temporal network. We report the work of \citeauthor{yang2013overlapping} \citetitle{yang2013overlapping}\cite{yang2013overlapping}. Later, we apply the algorithm proposed by \citeauthor{yang2013overlapping}, called BIGCLAM, into our Bitcoin temporal network data sample and our simulations as well. Finally, we illustrate that BIGCLAM can be used to learn the probability of edges of the Bitcoin temporal network moreover state that BIGCLAM could allow us to predict the dynamics of the Bitcoin Transactions Temporal Network, proposing then a promising future work for predicting the Bitcoin dynamics. 
+     
+	
+	
+% 	index
+    \tableofcontents
+    
+%    list of figures
+    \listoffigures
+
+%    list of algorithms    
+%    \listofalgorithms
+
+    \newpage
+    %\mainmatter
+    
+%    MAIN 
+%    \subfile{content/introduction/introduction}
+    
+    \chapter{Bitcoin}
+    \label{chap:Bitcoin}
+    \subfile{content/bitcoin/intro}
+
+    
+    \chapter{Unveiling the Bitcoin Transaction Temporal Network}
+    \label{chap:unveiling}
+    \subfile{content/unveiling/unveiling_bitcoin_as_a_graph}
+    \subfile{content/unveiling/unveiling_temporal_networks}
+    \subfile{content/unveiling/unveiling_motif}
+    \subfile{content/unveiling/unveiling_motif_bitcoin}
+    
+    \chapter{Modelling the Bitcoin Transaction Temporal Network}
+    \label{chap:modelling}
+    \subfile{content/modelling/activity_driven}
+    \subfile{content/modelling/model}
+    \subfile{content/modelling/applying_model}
+
+
+    \chapter{Learning the Parameters}
+    \label{chap:learning}
+    \subfile{content/learning/bigclam}
+    \subfile{content/learning/applying_bigclam}
+        
+    \chapter{Conclusion and Future Work}
+    \subfile{content/conclusion/conclusion}
+    \subfile{content/conclusion/future_work}
+       
+
+    \FloatBarrier
+
+% biblio
+    \printbibliography
+  
+\end{document}

@@ -1,0 +1,51 @@
+\documentclass[../../thesis.tex]{subfiles}
+%\graphicspath{{../../fig/}}
+
+\begin{document}
+
+We concluded from the previous section that only analytically generating a temporal network was not enough to adequately model our Bitcoin temporal network samples.  Consequently, this result motivates us to investigate the possibility of learning how the edges are created by looking at the real data. This layer of machine learning into our model could infer the correct parameters for the simulation. We propose in this section a strategy towards learning the probability of one node $u_{i}$ being connected to another $v_{i}$ node from our Bitcoin temporal network data. 
+
+\section{Bigclam}
+\label{sec:biglcam}
+
+We start by selecting the work from \citeauthor{yang2013overlapping}  \citetitle{yang2013overlapping}\cite{yang2013overlapping} as our learning algorithm. We believe this is the best state of the art algorithm for Community Detection on large-scale networks; it is a relatively new algorithm to be proven be quite efficient. However, we are not interested in the detection of communities but rather the weights of affiliations outputted by this algorithm. The work proposed by \citeauthor{yang2013overlapping}\cite{yang2013overlapping} presents the Cluster Affiliation Model for Big Networks (BIGCLAM), a probabilistic generative model for graphs that presumably captures the organization of networks based on community affiliations. The proposed model has three main components:
+\begin{enumerate}
+
+  \item{The first part acknowledges that communities emerge due to shared group associations.}
+  
+  \item{The second ingredient arises from the fact that people tend to be
+involved in communities through various degrees. Therefore, they assume that each affiliation edge has a non-negative weight. The higher the node’s weight of the affiliation to the community the more likely is the node to be connected to other members of the same community.}
+
+  \item{The last ingredient of the Bigclam model is based on the fact that, when people share multiple community connections (e.g., students who attended the same class), the links between them derive from the predominant reason that they shared a community. That means that for each community a pair of nodes shares, they get an independent chance of being connected to each other. Thus, naturally, the more communities a pair of nodes shares, the higher the probability of them being connected to each other.}
+  
+\end{enumerate}
+
+
+The model uses a bipartite graph to keep track of the relation nodes and communities, where the nodes at the bottom of the graph represent the nodes of a network G, the nodes on the top represent communities C, and the edges M indicate the relation of node affiliates to a community. They express this bipartite affiliation network as $B(V, C, M)$.
+
+Therefore, the algorithm is able to generate a network $G(V, E)$ given a bipartite community affiliation $B(V, C, M)$. The model considers a simple parameterization where they assign a non-negative weight $F_{uc}$ between node $u \in  V$ and community $c \in C$. Where $F_{uc}$ = 0 means no affiliation. Given F, they assume that each community $c$ connects its member nodes depending on the value of F. Formally, each community $c$ connects independently its member nodes $u$, $v$ with probability
+\begin{equation}
+  1 - e^{-F_{uc}F_{vc}}
+\end{equation}
+Thus, the edge probability between $u$ and $v$ is
+\begin{equation}
+	1 - e^{-\sum_{c}F_{uc}F_{vc}}
+\label{sec:biglcam_equation2}
+\end{equation}
+Where the higher the number of shared communities the higher the probability. Summarizing, given F, a non-negative matrix where $F_{uc}$ is a weight between node $u \in V$ and community $c \in C$, the BIGCLAM algorithm generates a graph $G(V, E)$ by creating an edge between a pair of nodes $u, v \in V$ with the probability \ref{sec:biglcam_equation2}. Note that by using this process, nodes that share multiple communities memberships receive many chances to create a link.
+
+Additionally, to allow edges between nodes that do not share
+any community affiliations, the model assumes an additional community, called the $\varepsilon$-community, which connects any pair of nodes with a very small probability $\varepsilon$, where from their experiments they set $\varepsilon \approx 10^{-8}$.
+
+Now that we defined the BIGCLAM model, we explain how to learn the affiliation weights between nodes using the model. Given an unlabelled static undirected network $G(V, E)$, we aim to detect $K=1$ community by fitting the BIGCLAM. 
+
+The algorithm keeps generating G' until G' fits G, by modifying the F matrix. In order words, it will look for the most likely affiliation factor matrix $\hat{F} \in R^{N\times K}$ to the network G. This is done by maximizing the likelihood $l(F) = log P(G|F)$:
+\begin{equation}
+\hat{F}  = \operatorname*{argmax}_{F\geq0} l(F)
+\label{bigclam_likelihood}
+\end{equation}
+
+Thus, BIGCLAM can learn $F \in R^{N\times K}$ that best approximates the adjacency matrix A of a given static network G. For more details on How \citeauthor{yang2013overlapping} solved the optimization problem of equation \ref{bigclam_likelihood} see \cite{yang2013overlapping}.
+
+
+\end{document}
